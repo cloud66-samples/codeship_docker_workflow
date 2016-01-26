@@ -1,1 +1,1 @@
-[ ![Codeship Status for kamerblauwlicht/codeship_docker_workflow](https://codeship.com/projects/792be980-a64e-0133-11fd-326223f7077d/status?branch=master)](https://codeship.com/projects/129859)
+[ ![Codeship Status for cloud66-samples/codeship_docker_workflow](https://codeship.com/projects/49637ee0-a66f-0133-33c4-168e19b352eb/status?branch=master)](https://codeship.com/projects/129905)

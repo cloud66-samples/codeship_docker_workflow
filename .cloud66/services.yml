@@ -1,7 +1,7 @@
 services:
   api:
-    git_url: git@bitbucket.org:kamerblauwlicht/docker-workflow-cloud66-codeship.git
-    git_branch: develop
+    git_url: git@github.com:cloud66-samples/codeship_docker_workflow.git
+    git_branch: master
     ports:
     - 80:80:443
 databases:
