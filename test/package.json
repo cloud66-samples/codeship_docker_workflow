@@ -9,10 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.13.4",
     "mocha": "^2.3.4",
-    "mongodb": "^2.1.4",
-    "mongoose": "^4.3.7",
     "supertest": "^1.1.0"
   }
 }

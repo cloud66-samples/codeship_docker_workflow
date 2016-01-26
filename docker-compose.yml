@@ -1,5 +1,5 @@
-api:
-  build: .
+server:
+  build: server
   links:
     - mongo:mongodb.cloud66.local
   ports:
@@ -8,8 +8,7 @@ api:
     - ${PWD}/api:/app
 
 test:
-  command: mocha
-  build: .
+  build: test
   links:
     - mongo:mongodb.cloud66.local
     - api

@@ -1,13 +1,15 @@
-api:
-  build: .
+server:
+  build: server
   links:
     - mongo:mongodb.cloud66.local
+
 test:
+  build: test
   command: mocha
   encrypted_env_file: cloud66-deployment.env.encrypted
-  build: .
   links:
     - mongo:mongodb.cloud66.local
-    - api
+    - server
+
 mongo:
   image: mongo

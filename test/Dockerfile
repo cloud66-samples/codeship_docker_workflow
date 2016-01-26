@@ -20,4 +20,4 @@ ADD api/. $APP_HOME
 ADD redeploy_hook_cloud66.sh $APP_HOME
 
 #run our server
-CMD node server
+CMD mocha
