@@ -1,0 +1,19 @@
+---
+docker:
+  configuration:
+    version: 1.9.1
+    weave_version: 1.4.2
+  servers:
+  - server:
+      unique_name: blog-codeship-dockerworkflow
+      size: 512mb
+      region: ams3
+      vendor: digitalocean
+      key_name: Default
+mongodb:
+  configuration:
+    version: 2.6.11
+    database: "<%= ENV['MONGODB_DATABASE']%>"
+  servers:
+  - server:
+      same_as: blog-codeship-dockerworkflow

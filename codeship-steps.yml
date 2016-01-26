@@ -1,0 +1,9 @@
+# test the app using mocha
+- name: test_step
+  service: test
+  command: mocha
+
+# if the test doesn't fall that redeploy on cloud66
+- name: redeploy_step
+  service: test
+  command: /app/redeploy_hook_cloud66.sh

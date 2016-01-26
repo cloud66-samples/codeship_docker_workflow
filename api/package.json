@@ -1,0 +1,18 @@
+{
+  "name": "cloud66_cloud66_ci_example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4",
+    "mocha": "^2.3.4",
+    "mongodb": "^2.1.4",
+    "mongoose": "^4.3.7",
+    "supertest": "^1.1.0"
+  }
+}

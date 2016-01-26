@@ -1,0 +1,20 @@
+api:
+  build: .
+  links:
+    - mongo:mongodb.cloud66.local
+  ports:
+  - "3000:80"
+  volumes:
+    - ${PWD}/api:/app
+
+test:
+  command: mocha
+  build: .
+  links:
+    - mongo:mongodb.cloud66.local
+    - api
+  volumes:
+    - ${PWD}/api:/app
+
+mongo:
+  image: mongo
