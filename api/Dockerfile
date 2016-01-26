@@ -16,7 +16,9 @@ ADD . $APP_HOME
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-#run our server
+#make sure nginx is startinf
 RUN rm -f /etc/service/nginx/down
-CMD nginx
+
+RUN rm /etc/nginx/sites-enabled/default
+ADD nginx/webapp.conf /etc/nginx/sites-enabled/webapp.conf
 
