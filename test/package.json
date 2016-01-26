@@ -8,6 +8,7 @@
   "license": "ISC",
   "dependencies": {
     "mocha": "^2.3.4",
+    "readyness": "^0.1.0",
     "supertest": "^1.1.0"
   }
 }
