@@ -1,19 +1,21 @@
-server:
-  build: server
+api:
+  build: api
   links:
-    - mongo:mongodb.cloud66.local
+    - mysql:mysql.cloud66.local
   ports:
   - "3000:80"
   volumes:
-    - ${PWD}/api:/app
+    - ${PWD}/api:/home/app
 
 test:
   build: test
   links:
-    - mongo:mongodb.cloud66.local
+    - mysql:mysql.cloud66.local
     - api
   volumes:
-    - ${PWD}/api:/app
+    - ${PWD}/test:/app
 
-mongo:
-  image: mongo
+mysql:
+  image: mysql
+  environment:
+    - MYSQL_ALLOW_EMPTY_PASSWORD=true 

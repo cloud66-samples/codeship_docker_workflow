@@ -1,15 +1,16 @@
-server:
-  build: server
+api:
+  build: api
   links:
-    - mongo:mongodb.cloud66.local
+    - mysql:mysql.cloud66.local
 
 test:
   build: test
-  command: mocha
   encrypted_env_file: cloud66-deployment.env.encrypted
   links:
-    - mongo:mongodb.cloud66.local
-    - server
+    - mysql:mysql.cloud66.local
+    - api
 
-mongo:
-  image: mongo
+mysql:
+  image: mysql
+  environment:
+    - MYSQL_ALLOW_EMPTY_PASSWORD=true 

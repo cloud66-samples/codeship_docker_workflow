@@ -2,12 +2,12 @@
   "name": "codeship_docker_workflow",
   "version": "1.0.0",
   "repository": "cloud66-samples/codeship_docker_workflow",
-  "description": "simple node.js test script for demonstrating docker workflow with cloud66",
-  "main": "test.js",
+  "description": "simple node.js api for demonstrating docker workflow with cloud66",
+  "main": "server.js",
   "author": "Daniël van Gils",
   "license": "ISC",
   "dependencies": {
-    "mocha": "^2.3.4",
-    "supertest": "^1.1.0"
+    "express": "^4.13.4",
+    "mysql": "^2.10.2"
   }
 }
