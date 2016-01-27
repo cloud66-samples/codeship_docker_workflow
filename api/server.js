@@ -15,15 +15,17 @@ var startServer = function(port) {
     database : process.env.MYSQL_DATABASE
   });
 
-  connection.connect(function(err) {
+  //init database
+  var waitForSocket = require('socket-retry-connect').waitForSocket;
+  waitForSocket({host: process.env.MYSQL_HOST ,port: 3306, maxTries: 10 }, function(err, socket) {
+    connection.connect(function(err) {
     if (err) {
       console.error('error connecting: ' + err.stack);
       return;
     }
-    console.log("connection made to DB server on 3306");
-  
     connection.query("CREATE DATABASE IF NOT EXISTS " + process.env.MYSQL_DATABASE);
     connection.query("CREATE TABLE IF NOT EXISTS cats (name text,id int NOT NULL AUTO_INCREMENT,PRIMARY KEY (id))");
+    });
   });
 
   // middleware to use for all requests
