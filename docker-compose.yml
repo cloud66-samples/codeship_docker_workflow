@@ -1,36 +1,36 @@
 api:
-  build: api
-  links:
-    - mysql:mysql.cloud66.local
+  build: services/api
   ports:
   - "3000:80"
-  volumes:
-    - ${PWD}/api:/app
+  links:
+    - mysql:mysql.cloud66.local
   environment:
     - MYSQL_ADDRESS=mysql.cloud66.local
-    - MYSQL_DATABASE=development
+    - MYSQL_DATABASE=test
     - MYSQL_USERNAME=test
     - MYSQL_PASSWORD=test  
 
 test:
-  build: api
+  build: services/test
   command: mocha
   links:
+    - api:api.cloud66.local
     - mysql:mysql.cloud66.local
-  volumes:
-    - ${PWD}/api:/app
   environment:
+    - API_ADDRESS=api.cloud66.local
     - MYSQL_ADDRESS=mysql.cloud66.local
     - MYSQL_DATABASE=test
     - MYSQL_USERNAME=test
-    - MYSQL_PASSWORD=test 
+    - MYSQL_PASSWORD=test
 
 mysql:
   image: mysql
-  ports:
-  - "3306:3306"
   environment:
     - MYSQL_DATABASE=test
     - MYSQL_ROOT_PASSWORD=test
     - MYSQL_USER=test
-    - MYSQL_PASSWORD=test 
+    - MYSQL_PASSWORD=test  
+
+notifier:
+  build: services/notifier
+  command: echo "don't use the cloud66 redeployhook notifier on your local machine"

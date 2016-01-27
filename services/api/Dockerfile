@@ -9,7 +9,6 @@ WORKDIR $APP_HOME
 #download all depencies
 ADD package.json $APP_HOME/
 RUN npm install
-RUN npm install -g mocha
 
 #add the source code
 ADD . $APP_HOME

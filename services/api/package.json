@@ -9,10 +9,8 @@
   "dependencies": {
     "body-parser": "^1.14.2",
     "express": "^4.13.4",
-    "mocha": "^2.3.4",
     "mysql": "^2.10.2",
     "readyness": "^0.1.0",
-    "socket-retry-connect": "0.0.1",
-    "supertest": "^1.1.0"
+    "socket-retry-connect": "0.0.1"
   }
 }

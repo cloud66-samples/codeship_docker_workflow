@@ -1,4 +1,4 @@
-api/node_modules
-
+services/api/node_modules
+services/test/node_modules
 codeship.aes
-cloud66-deployment.env
+services/notifier/cloud66-deployment.env

@@ -1,12 +1,11 @@
 var supertest = require("supertest");
-var server = require("../app");
 var mysql   = require('mysql');
 
 //wait before the api server is up and running and connected to mysql
 var waitForAPIConnectionIsDone = require('readyness').waitFor('api_server:up_and_running');
 var waitForDBConnectionIsDone  = require('readyness').waitFor('db_server:up_and_running');
 var waitForSocket = require('socket-retry-connect').waitForSocket;
-waitForSocket({host: 'localhost' ,port: 80, maxTries: 10 }, function(err, socket) {
+waitForSocket({host: process.env.API_ADDRESS ,port: 80, maxTries: 10 }, function(err, socket) {
   waitForAPIConnectionIsDone();
 });
 waitForSocket({host: process.env.MYSQL_ADDRESS ,port: 3306, maxTries: 10 }, function(err, socket) {
@@ -44,8 +43,8 @@ describe("setup", function() {
 
 
 //run all the test
-describe("test api",function(){
-  var test_server = supertest.agent("http://localhost");
+describe("the wonderful cat API",function(){
+  var test_server = supertest.agent("http://" + process.env.API_ADDRESS);
 
  
 

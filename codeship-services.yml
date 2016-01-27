@@ -1,6 +1,5 @@
-test:
-  build: api
-  encrypted_env_file: cloud66-deployment.env.encrypted
+api:
+  build: services/api
   links:
     - mysql:mysql.cloud66.local
   environment:
@@ -9,10 +8,27 @@ test:
     - MYSQL_USERNAME=test
     - MYSQL_PASSWORD=test  
 
+test:
+  build: services/test
+  command: mocha
+  links:
+    - api:api.cloud66.local
+    - mysql:mysql.cloud66.local
+  environment:
+    - API_ADDRESS=api.cloud66.local
+    - MYSQL_ADDRESS=mysql.cloud66.local
+    - MYSQL_DATABASE=test
+    - MYSQL_USERNAME=test
+    - MYSQL_PASSWORD=test
+
 mysql:
   image: mysql
   environment:
     - MYSQL_DATABASE=test
     - MYSQL_ROOT_PASSWORD=test
     - MYSQL_USER=test
-    - MYSQL_PASSWORD=test  
+    - MYSQL_PASSWORD=test 
+
+notifier:
+  build: services/notifier
+  encrypted_env_file: services/notifier/cloud66-deployment.env.encrypted
