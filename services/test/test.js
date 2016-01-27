@@ -5,10 +5,10 @@ var mysql   = require('mysql');
 var waitForAPIConnectionIsDone = require('readyness').waitFor('api_server:up_and_running');
 var waitForDBConnectionIsDone  = require('readyness').waitFor('db_server:up_and_running');
 var waitForSocket = require('socket-retry-connect').waitForSocket;
-waitForSocket({host: process.env.API_ADDRESS ,port: 80, maxTries: 10 }, function(err, socket) {
+waitForSocket({host: process.env.API_ADDRESS ,port: 80, maxTries: 100 }, function(err, socket) {
   waitForAPIConnectionIsDone();
 });
-waitForSocket({host: process.env.MYSQL_ADDRESS ,port: 3306, maxTries: 10 }, function(err, socket) {
+waitForSocket({host: process.env.MYSQL_ADDRESS ,port: 3306, maxTries: 100 }, function(err, socket) {
   waitForDBConnectionIsDone();
 });
 

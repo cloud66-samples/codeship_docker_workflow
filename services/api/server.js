@@ -17,7 +17,7 @@ var startServer = function(port) {
 
   //init database
   var waitForSocket = require('socket-retry-connect').waitForSocket;
-  waitForSocket({host: process.env.MYSQL_ADDRESS ,port: 3306, maxTries: 10 }, function(err, socket) {
+  waitForSocket({host: process.env.MYSQL_ADDRESS ,port: 3306, maxTries: 100 }, function(err, socket) {
     connection.connect(function(err) {
     if (err) {
       console.error('error connecting: ' + err.stack);
