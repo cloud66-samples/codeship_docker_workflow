@@ -1,8 +1,10 @@
+---
 services:
   api:
-  	dockerfile_path: api/Dockerfile
     git_url: git@github.com:cloud66-samples/codeship_docker_workflow.git
     git_branch: master
-    ports: ["80:80:443"]
+    ports:
+    - 80:80:443
+    build_root: api
 databases:
 - mysql
