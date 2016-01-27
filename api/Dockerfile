@@ -3,6 +3,7 @@ MAINTAINER Daniël van Gils
 
 #setting up directory structure for the node.js app
 ENV APP_HOME /app
+RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
 #download all depencies
