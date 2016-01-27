@@ -30,7 +30,8 @@ var startServer = function(port) {
 
   // middleware to use for all requests
   router.use(function(req, res, next) {
-      console.log("request = " + req.originalUrl);
+      console.log(req.method + " request = " + req.originalUrl);
+      console.log(req.body);
       next();
   });
 

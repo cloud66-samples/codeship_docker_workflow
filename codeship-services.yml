@@ -1,6 +1,5 @@
 test:
   build: api
-  cached: true
   encrypted_env_file: cloud66-deployment.env.encrypted
   links:
     - mysql:mysql.cloud66.local
