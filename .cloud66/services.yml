@@ -5,6 +5,6 @@ services:
     git_branch: master
     ports:
     - 80:80:443
-    build_root: api
+    build_root: services/api
 databases:
 - mysql
