@@ -7,9 +7,9 @@ api:
   volumes:
     - ${PWD}/api:/app
   environment:
-    - MYSQL_HOST=mysql.cloud66.local
+    - MYSQL_ADDRESS=mysql.cloud66.local
     - MYSQL_DATABASE=development
-    - MYSQL_USER=test
+    - MYSQL_USERNAME=test
     - MYSQL_PASSWORD=test  
 
 test:
@@ -20,9 +20,9 @@ test:
   volumes:
     - ${PWD}/api:/app
   environment:
-    - MYSQL_HOST=mysql.cloud66.local
+    - MYSQL_ADDRESS=mysql.cloud66.local
     - MYSQL_DATABASE=test
-    - MYSQL_USER=test
+    - MYSQL_USERNAME=test
     - MYSQL_PASSWORD=test 
 
 mysql:

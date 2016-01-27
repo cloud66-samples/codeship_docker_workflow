@@ -9,15 +9,15 @@ var startServer = function(port) {
   app.use(bodyParser.json()); // for parsing application/json
 
   var connection = mysql.createConnection({
-    host     : process.env.MYSQL_HOST,
-    user     : process.env.MYSQL_USER,
+    host     : process.env.MYSQL_ADDRESS,
+    user     : process.env.MYSQL_USERNAME,
     password : process.env.MYSQL_PASSWORD,
     database : process.env.MYSQL_DATABASE
   });
 
   //init database
   var waitForSocket = require('socket-retry-connect').waitForSocket;
-  waitForSocket({host: process.env.MYSQL_HOST ,port: 3306, maxTries: 10 }, function(err, socket) {
+  waitForSocket({host: process.env.MYSQL_ADDRESS ,port: 3306, maxTries: 10 }, function(err, socket) {
     connection.connect(function(err) {
     if (err) {
       console.error('error connecting: ' + err.stack);

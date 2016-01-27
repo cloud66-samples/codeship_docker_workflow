@@ -4,9 +4,9 @@ test:
   links:
     - mysql:mysql.cloud66.local
   environment:
-    - MYSQL_HOST=mysql.cloud66.local
+    - MYSQL_ADDRESS=mysql.cloud66.local
     - MYSQL_DATABASE=test
-    - MYSQL_USER=test
+    - MYSQL_USERNAME=test
     - MYSQL_PASSWORD=test  
 
 mysql:
