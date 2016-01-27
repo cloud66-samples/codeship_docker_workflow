@@ -5,15 +5,25 @@ api:
   ports:
   - "3000:80"
   volumes:
-    - ${PWD}/api:/home/app
+    - ${PWD}/api:/app
+  environment:
+    - MYSQL_HOST=mysql.cloud66.local
+    - MYSQL_DATABASE=development
+    - MYSQL_USER=test
+    - MYSQL_PASSWORD=test  
 
 test:
-  build: test
+  build: api
+  command: mocha
   links:
     - mysql:mysql.cloud66.local
-    - api
   volumes:
-    - ${PWD}/test:/app
+    - ${PWD}/api:/app
+  environment:
+    - MYSQL_HOST=mysql.cloud66.local
+    - MYSQL_DATABASE=test
+    - MYSQL_USER=test
+    - MYSQL_PASSWORD=test 
 
 mysql:
   image: mysql

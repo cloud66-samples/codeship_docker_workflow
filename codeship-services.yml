@@ -1,14 +1,13 @@
-api:
-  build: api
-  links:
-    - mysql:mysql.cloud66.local
-
 test:
-  build: test
+  build: api
   encrypted_env_file: cloud66-deployment.env.encrypted
   links:
     - mysql:mysql.cloud66.local
-    - api
+  environment:
+    - MYSQL_HOST=mysql.cloud66.local
+    - MYSQL_DATABASE=test
+    - MYSQL_USER=test
+    - MYSQL_PASSWORD=test  
 
 mysql:
   image: mysql

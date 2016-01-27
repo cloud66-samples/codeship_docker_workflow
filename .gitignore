@@ -1,5 +1,4 @@
 api/node_modules
-test/node_modules
 
 codeship.aes
 cloud66-deployment.env
