@@ -16,7 +16,7 @@ waitForSocket({host: process.env.MYSQL_HOST ,port: 3306, maxTries: 10 }, functio
 describe("setup", function() {
  //before running all the test make sure our api & db server are up in running
   before(function(done) {
-    this.timeout(10000);
+    this.timeout(30000);
     require('readyness').doWhen(done);
   });
 
