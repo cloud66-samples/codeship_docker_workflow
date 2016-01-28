@@ -15,19 +15,15 @@ var startServer = function(port) {
     database : process.env.MYSQL_DATABASE
   });
 
-  //init database
-  var waitForSocket = require('socket-retry-connect').waitForSocket;
-  waitForSocket({host: process.env.MYSQL_ADDRESS ,port: 3306, maxTries: 100 }, function(err, socket) {
-    connection.connect(function(err) {
-    if (err) {
-      console.error('error connecting: ' + err.stack);
-      return;
-    }
-    connection.query("CREATE DATABASE IF NOT EXISTS " + process.env.MYSQL_DATABASE);
-    connection.query("CREATE TABLE IF NOT EXISTS cats (name text,id int NOT NULL AUTO_INCREMENT,PRIMARY KEY (id))");
-    });
+  connection.connect(function(err) {
+  if (err) {
+    console.error('error connecting: ' + err.stack);
+    return;
+  }
+  connection.query("CREATE DATABASE IF NOT EXISTS " + process.env.MYSQL_DATABASE);
+  connection.query("CREATE TABLE IF NOT EXISTS cats (name text,id int NOT NULL AUTO_INCREMENT,PRIMARY KEY (id))");
   });
-
+  
   // middleware to use for all requests
   router.use(function(req, res, next) {
       console.log(req.method + " request = " + req.originalUrl);

@@ -1,6 +1,6 @@
 - name: test_step
   service: test
-  command: mocha
+  command: /app/test.sh
 
 # if the test doesn't fall that redeploy on cloud66
 - name: redeploy_step

@@ -10,7 +10,6 @@ api:
 
 test:
   build: services/test
-  command: mocha
   links:
     - api:api.cloud66.local
     - mysql:mysql.cloud66.local

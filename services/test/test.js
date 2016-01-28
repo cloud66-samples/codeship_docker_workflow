@@ -1,24 +1,7 @@
 var supertest = require("supertest");
 var mysql   = require('mysql');
 
-//wait before the api server is up and running and connected to mysql
-var waitForAPIConnectionIsDone = require('readyness').waitFor('api_server:up_and_running');
-var waitForDBConnectionIsDone  = require('readyness').waitFor('db_server:up_and_running');
-var waitForSocket = require('socket-retry-connect').waitForSocket;
-waitForSocket({host: process.env.API_ADDRESS ,port: 80, maxTries: 100 }, function(err, socket) {
-  waitForAPIConnectionIsDone();
-});
-waitForSocket({host: process.env.MYSQL_ADDRESS ,port: 3306, maxTries: 100 }, function(err, socket) {
-  waitForDBConnectionIsDone();
-});
-
 describe("setup", function() {
- //before running all the test make sure our api & db server are up in running
-  before(function(done) {
-    this.timeout(30000);
-    require('readyness').doWhen(done);
-  });
-
   it("should reset the database",function(done){
     var connection = mysql.createConnection({
       host     : process.env.MYSQL_ADDRESS,
@@ -45,8 +28,6 @@ describe("setup", function() {
 //run all the test
 describe("the wonderful cat API",function(){
   var test_server = supertest.agent("http://" + process.env.API_ADDRESS);
-
- 
 
   it("should create a cat",function(done){
   	test_server

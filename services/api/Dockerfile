@@ -6,6 +6,10 @@ ENV APP_HOME /app
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
+#download mysql for connectivity check
+RUN apt-get update && apt-get install -y mysql-client
+
+
 #download all depencies
 ADD package.json $APP_HOME/
 RUN npm install
@@ -15,4 +19,4 @@ ADD . $APP_HOME
 
 #start the api server
 EXPOSE 80
-CMD node app.js
+CMD $APP_HOME/start.sh
