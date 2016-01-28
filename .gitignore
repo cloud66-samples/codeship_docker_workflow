@@ -1,4 +1,3 @@
 services/api/node_modules
 services/test/node_modules
 codeship.aes
-services/notifier/cloud66-deployment.env
