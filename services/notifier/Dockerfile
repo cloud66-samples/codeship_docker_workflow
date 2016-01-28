@@ -12,3 +12,4 @@ RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
 ADD redeploy_hook_cloud66.sh $APP_HOME
+CMD $APP_HOME/redeploy_hook_cloud66.sh

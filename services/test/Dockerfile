@@ -16,3 +16,4 @@ RUN npm install -g mocha
 
 #add the source code
 ADD . $APP_HOME
+CMD $APP_HOME/test.sh

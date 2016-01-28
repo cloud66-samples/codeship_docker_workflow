@@ -12,7 +12,6 @@ api:
 
 test:
   build: services/test
-  command: /app/test.sh
   links:
     - api:api.cloud66.local
     - mysql:mysql.cloud66.local
