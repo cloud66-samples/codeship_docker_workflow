@@ -8,7 +8,7 @@ count=0
 until ( health_check_mysql )
 do
   ((count++))
-  if [ ${count} -gt 50 ]
+  if [ ${count} -gt 90 ]
   then
     echo "Services didn't become ready in time"
     exit 1
