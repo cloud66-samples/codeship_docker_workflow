@@ -6,8 +6,8 @@ ENV APP_HOME /app
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
-#download mysql for connectivity check
-RUN apt-get update && apt-get install -y mysql-client
+#download nc for connectivity check
+RUN apt-get update && apt-get install -y netcat
 
 #download all depencies
 ADD package.json $APP_HOME/

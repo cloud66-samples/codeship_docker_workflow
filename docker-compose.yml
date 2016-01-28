@@ -3,6 +3,7 @@ api:
   ports:
   - "3000:80"
   links:
+    - mysql
     - mysql:mysql.cloud66.local
   environment:
     - MYSQL_ADDRESS=mysql.cloud66.local
@@ -13,6 +14,8 @@ api:
 test:
   build: services/test
   links:
+    - api
+    - mysql
     - api:api.cloud66.local
     - mysql:mysql.cloud66.local
   environment:

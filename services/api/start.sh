@@ -1,19 +1,21 @@
 #!/bin/bash
+set -e
 
-function health_check_mysql {
-  mysqladmin -h "${MYSQL_ADDRESS}" ping --user="${MYSQL_USERNAME}" --password="${MYSQL_PASSWORD}"
+function check_port() {
+	local host=${1} && shift
+	local port=${1} && shift
+	local retries=90
+	local wait=1
+
+	until( $(nc -zv ${host} ${port}) ); do
+		((retries--))
+		if [ $retries -lt 0 ]; then
+			echo "Service ${host} didn't become ready in time."
+			exit 1
+		fi
+		sleep "${wait}"
+	done
 }
 
-count=0
-until ( health_check_mysql )
-do
-  ((count++))
-  if [ ${count} -gt 90 ]
-  then
-    echo "Services didn't become ready in time"
-    exit 1
-  fi
-  sleep 1
-done
-
+check_port "mysql" "3306"
 node app.js
