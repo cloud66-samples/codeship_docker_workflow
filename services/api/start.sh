@@ -1,11 +1,11 @@
 #!/bin/bash
 
-function test_mysql {
+function health_check_mysql {
   mysqladmin -h "${MYSQL_ADDRESS}" ping --user="${MYSQL_USERNAME}" --password="${MYSQL_PASSWORD}"
 }
 
 count=0
-until ( test_mysql )
+until ( health_check_mysql )
 do
   ((count++))
   if [ ${count} -gt 50 ]

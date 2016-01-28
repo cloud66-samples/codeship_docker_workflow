@@ -31,6 +31,10 @@ var startServer = function(port) {
       next();
   });
 
+  router.get('/health', function(req, res) {
+    res.json({health: 'ok'});
+  });
+
   router.get('/cats', function(req, res) {
      connection.query('SELECT * FROM cats', {}, function(err, result, fields) {
      if (err) throw err;
@@ -44,6 +48,13 @@ var startServer = function(port) {
       res.json({message: 'cat added'});
     });
   });
+
+  router.post('/cats/reset', function(req, res) {
+    connection.query("DROP TABLE cats");
+    connection.query("CREATE TABLE IF NOT EXISTS cats (name text,id int NOT NULL AUTO_INCREMENT,PRIMARY KEY (id))");
+    res.json({message: 'all cats removed'});
+  });
+
 
   // all of our routes will be prefixed with /api
   app.use('/api', router);

@@ -1,15 +1,15 @@
 #!/bin/bash
 
-function test_api {
-  curl "http://${API_ADDRESS}"
+function health_check_api {
+  curl "http://${API_ADDRESS}/api/health"
 }
 
-function test_mysql {
+function health_check_mysql {
   mysqladmin -h "${MYSQL_ADDRESS}" ping --user="${MYSQL_USERNAME}" --password="${MYSQL_PASSWORD}"
 }
 
 count=0
-until ( test_api && test_mysql )
+until ( health_check_api && health_check_mysql )
 do
   ((count++))
   if [ ${count} -gt 30 ]
