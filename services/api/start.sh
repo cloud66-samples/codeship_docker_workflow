@@ -17,5 +17,5 @@ function check_port() {
 	done
 }
 
-check_port "mysql" "3306"
+check_port "mysql.cloud66.local" "3306"
 node app.js
