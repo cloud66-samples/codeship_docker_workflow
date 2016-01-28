@@ -1,8 +1,6 @@
 var supertest = require("supertest");
-var mysql   = require('mysql');
 var test_server = supertest.agent("http://" + process.env.API_ADDRESS);
   
-
 describe("start all test", function() {
   it("should remove all existing cats from the database",function(done){
     test_server.post("/api/cats/reset").send({})

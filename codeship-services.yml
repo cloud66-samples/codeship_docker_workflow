@@ -13,15 +13,9 @@ test:
   build: services/test
   links:
     - api
-    - mysql
     - api:api.cloud66.local
-    - mysql:mysql.cloud66.local
   environment:
     - API_ADDRESS=api.cloud66.local
-    - MYSQL_ADDRESS=mysql.cloud66.local
-    - MYSQL_DATABASE=test
-    - MYSQL_USERNAME=test
-    - MYSQL_PASSWORD=test
 
 mysql:
   image: mysql

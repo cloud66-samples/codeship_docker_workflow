@@ -20,11 +20,7 @@ test:
     - mysql:mysql.cloud66.local
   environment:
     - API_ADDRESS=api.cloud66.local
-    - MYSQL_ADDRESS=mysql.cloud66.local
-    - MYSQL_DATABASE=test
-    - MYSQL_USERNAME=test
-    - MYSQL_PASSWORD=test
-
+    
 mysql:
   image: mysql
   environment:
