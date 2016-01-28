@@ -12,6 +12,8 @@ api:
 test:
   build: services/test
   links:
+    - mysql
+    - mysql:mysql.cloud66.local
     - api
     - api:api.cloud66.local
   environment:
