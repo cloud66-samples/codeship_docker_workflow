@@ -39,6 +39,9 @@ Enough talking. Let's try it out!
 
 * `git clone https://github.com/cloud66-samples/codeship_docker_workflow.git cats`
 * `cd cats`
+
+The best way to get your microservice architecture up and running is using the `docker-compose` tool. 
+
 * `docker-compose build`
 * `docker-compose run test`
 

@@ -1,3 +1,4 @@
+# the infamous api
 api:
   build: services/api
   ports:
@@ -11,6 +12,7 @@ api:
     - MYSQL_USERNAME=test
     - MYSQL_PASSWORD=test  
 
+# test suite to test the api outside-in
 test:
   build: services/test
   links:
@@ -20,7 +22,8 @@ test:
     - mysql:mysql.cloud66.local
   environment:
     - API_ADDRESS=api.cloud66.local
-    
+
+# a mysql db for data storage
 mysql:
   image: mysql
   environment:
@@ -29,6 +32,7 @@ mysql:
     - MYSQL_USER=test
     - MYSQL_PASSWORD=test  
 
+# a notifier script to tell cloud66 to redeploy our well tested api service
 notifier:
   build: services/notifier
   command: echo "don't use the cloud66 redeployhook notifier on your local machine"

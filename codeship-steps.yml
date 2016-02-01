@@ -1,3 +1,4 @@
+# run the test suite, because it depends on the api and mysql those will start too
 - name: test_step
   service: test
   command: /app/test.sh
