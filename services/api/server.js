@@ -49,7 +49,7 @@ var startServer = function(port) {
     });
   });
 
-  router.post('/cats/reset', function(req, res) {
+  router.delete('/cats', function(req, res) {
     connection.query("DROP TABLE cats");
     connection.query("CREATE TABLE IF NOT EXISTS cats (name text,id int NOT NULL AUTO_INCREMENT,PRIMARY KEY (id))");
     res.json({message: 'all cats removed'});

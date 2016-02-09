@@ -3,7 +3,7 @@ var test_server = supertest.agent("http://" + process.env.API_ADDRESS);
   
 describe("start all test", function() {
   it("should remove all existing cats from the database",function(done){
-    test_server.post("/api/cats/reset").send({})
+    test_server.delete("/api/cats").send({})
       .expect(200, {message: 'all cats removed'},done);
   });
 });

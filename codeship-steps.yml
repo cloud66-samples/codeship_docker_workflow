@@ -1,10 +1,12 @@
 # run the test suite, because it depends on the api and mysql those will start too
 - name: test_step
+  tag: master
   service: test
   command: /app/test.sh
 
 # if the test doesn't fall that redeploy on cloud66
 - name: redeploy_step
+  tag: master
   service: notifier
   command: /app/redeploy_hook_cloud66.sh
 
